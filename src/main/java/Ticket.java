@@ -1,10 +1,13 @@
 
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Ticket implements Serializable{
-    String category;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	String category;
     String date;
     int numberSold;
     int income;
