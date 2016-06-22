@@ -19,6 +19,8 @@
 
 import java.util.ArrayList;
 
+import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -27,6 +29,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+
 
 /**
  * A simple REST service which is able to say hello to someone using HelloService Please take a look at the web.xml where JAX-RS
@@ -37,14 +40,16 @@ import javax.ws.rs.Produces;
  */
 
 @Path("/")
-//@XmlRootElement
+@SessionScoped
 public class TicketZooServer{
 
     HelloService helloService = new HelloService();
-    TicketManager ticketManager = null;
+    @Inject
+    TicketManagerInterface ticketManager;
 
     public TicketZooServer(){
-    	ticketManager = TicketManager.getInstance();
+
+    	//ticketManager = TicketManager.getInstance();
     }
     @GET
     @Path("/json")

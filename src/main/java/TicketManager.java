@@ -3,32 +3,26 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class TicketManager {
-    protected ArrayList<Ticket> list = new ArrayList<>();
-    protected static TicketManager instance;
+import javax.annotation.PostConstruct;
+import javax.ejb.Stateful;
+
+//@Stateful
+public class TicketManager implements TicketManagerInterface{
+    static private ArrayList<Ticket> list = new ArrayList<>();
     private int comp=0;
 
-    TicketManager()
-    {
-        //super();
-        initListe();
-    }
-
-    public static TicketManager getInstance()
-    {
-        if (instance==null){
-            instance = new TicketManager();
-        }
-        return instance;
-    }
-
+    @PostConstruct
     void initListe()
     {
-        list.add(new Ticket(0, 70, "Individuel", "06/06/2016", 10));
-        list.add(new Ticket(1, 150, "Groupe", "06/06/2016", 2));
-        list.add(new Ticket(2, 30, "Enfant", "06/06/2016", 15));
-        comp=2;
+    	if (list.isEmpty())
+    	{ 
+	        list.add(new Ticket(0, 70, "Individuel1", "06/06/1916", 10));
+	        list.add(new Ticket(1, 150, "Groupe1", "06/06/1916", 2));
+	        list.add(new Ticket(2, 30, "Enfant1", "06/06/1916", 15));
+	        comp=2;
+    	}
     }
+
     public void add(Ticket tck)
     {
     	comp++;
@@ -51,6 +45,7 @@ public class TicketManager {
     {
         return list;
     }
+    
     public ArrayList<Ticket> getList(List<Ticket> listRepos)
     {
         list = new ArrayList<Ticket>(listRepos);
