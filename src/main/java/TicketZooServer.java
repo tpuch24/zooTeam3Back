@@ -1,3 +1,4 @@
+
 /*
  * JBoss, Home of Professional Open Source
  * Copyright 2015, Red Hat, Inc. and/or its affiliates, and individual
@@ -15,8 +16,6 @@
  * limitations under the License.
  */
 
-
-
 import java.util.ArrayList;
 
 import javax.faces.bean.SessionScoped;
@@ -30,10 +29,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import model.Ticket;
 
 /**
- * A simple REST service which is able to say hello to someone using HelloService Please take a look at the web.xml where JAX-RS
- * is enabled
+ * A simple REST service which is able to say hello to someone using
+ * HelloService Please take a look at the web.xml where JAX-RS is enabled
  *
  * @author gbrey@redhat.com
  *
@@ -41,84 +41,84 @@ import javax.ws.rs.Produces;
 
 @Path("/")
 @SessionScoped
-public class TicketZooServer{
+public class TicketZooServer {
 
-    HelloService helloService = new HelloService();
-    @Inject
-    TicketManagerInterface ticketManager;
+	HelloService helloService = new HelloService();
+	@Inject
+	TicketManagerInterface ticketManager;
 
-    public TicketZooServer(){
+	public TicketZooServer() {
 
-    	//ticketManager = TicketManager.getInstance();
-    }
-    @GET
-    @Path("/json")
-    @Produces({ "application/json" })
-    public String getHelloWorldJSON() {
-        return "{\"result\":\"" + helloService.createHelloMessage("World") + "\"}";
-    }
+		// ticketManager = TicketManager.getInstance();
+	}
 
-    @GET
-    @Path("/xml")
-    @Produces({ "application/xml" })
-    public String getHelloWorldXML() {
-        return "<xml><result>"+ helloService.createHelloMessage("World")+ "</result></xml>";
-    }
+	@GET
+	@Path("/json")
+	@Produces({ "application/json" })
+	public String getHelloWorldJSON() {
+		return "{\"result\":\"" + helloService.createHelloMessage("World") + "\"}";
+	}
 
-    @GET
-    @Path("/getTicketList")
-    @Produces({ "application/json" })
-    public ArrayList<Ticket> getTicketList() {
-        return ticketManager.getList();
-    }
+	@GET
+	@Path("/xml")
+	@Produces({ "application/xml" })
+	public String getHelloWorldXML() {
+		return "<xml><result>" + helloService.createHelloMessage("World") + "</result></xml>";
+	}
 
-    @GET
-    @Path("/getTicket/{id}")
-    @Produces({ "application/json" })
-    public Ticket getTicket(@PathParam("id") String id ) {
-        return ticketManager.getOneById(Integer.parseInt(id));
-    }
+	@GET
+	@Path("/getTicketList")
+	@Produces({ "application/json" })
+	public ArrayList<Ticket> getTicketList() {
+		return ticketManager.getList();
+	}
 
-    @POST
-    @Path("/updateTicket")
-    @Consumes("application/json")
-    public void updateTicket(Ticket ticket)
-    {
-    	//ticketManager.update(id,ticket);
-    	//System.out.println(ticket);
+	@GET
+	@Path("/getTicket/{id}")
+	@Produces({ "application/json" })
+	public Ticket getTicket(@PathParam("id") String id) {
+		return ticketManager.getOneById(Integer.parseInt(id));
+	}
 
-    	System.out.println(ticket.category);
-    	//System.out.println(tck.toString());
-    	ticketManager.update(ticket);
-    	
-    	//return "Error: setTicketList: Wrong parameters";
-    }
-    @PUT
-    @Path("/addTicket")
-    @Consumes("application/json")
-    public void addTicket(Ticket ticket)
-    {
-    	ticketManager.add(ticket);
-    	//System.out.println(ticket);
+	@POST
+	@Path("/updateTicket")
+	@Consumes("application/json")
+	public void updateTicket(Ticket ticket) {
+		// ticketManager.update(id,ticket);
+		// System.out.println(ticket);
 
-    	System.out.println(ticket.category);
-    	//System.out.println(tck.toString());
-    	//ticketManager.add(new Ticket(income,category,date,numbersold));
-    	
-    	//return "Error: setTicketList: Wrong parameters";
-    }
-    @DELETE
-    @Path("/deleteTicket/{id}")
-    @Consumes("application/json")
-    public void deleteTicket(@PathParam("id") int id)
-    {
-    	ticketManager.delete(id);
-    	//System.out.println(ticket);
+		System.out.println(ticket.getCategory());
+		// System.out.println(tck.toString());
+		ticketManager.update(ticket);
 
-    	System.out.println("Delete ticket "+id);
-    	//System.out.println(tck.toString());
-    	//ticketManager.add(new Ticket(income,category,date,numbersold));
-    	
-    	//return "Error: setTicketList: Wrong parameters";
-    }
+		// return "Error: setTicketList: Wrong parameters";
+	}
+
+	@PUT
+	@Path("/addTicket")
+	@Consumes("application/json")
+	public void addTicket(Ticket ticket) {
+		ticketManager.add(ticket);
+		// System.out.println(ticket);
+
+		System.out.println(ticket.getCategory());
+		// System.out.println(tck.toString());
+		// ticketManager.add(new Ticket(income,category,date,numbersold));
+
+		// return "Error: setTicketList: Wrong parameters";
+	}
+
+	@DELETE
+	@Path("/deleteTicket/{id}")
+	@Consumes("application/json")
+	public void deleteTicket(@PathParam("id") int id) {
+		ticketManager.delete(id);
+		// System.out.println(ticket);
+
+		System.out.println("Delete ticket " + id);
+		// System.out.println(tck.toString());
+		// ticketManager.add(new Ticket(income,category,date,numbersold));
+
+		// return "Error: setTicketList: Wrong parameters";
+	}
 }

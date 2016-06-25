@@ -23,7 +23,7 @@
     <artifactId>ZooServer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>WildFly Quickstarts: ZooServer</name>
+    <name>WildFly Quickstarts: JPA</name>
     <description>A starter Java EE 7 webapp project for use on JBoss WildFly / WildFly, generated from the jboss-javaee6-webapp archetype</description>
 
     <url>http://wildfly.org</url>
@@ -195,10 +195,6 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-        	<groupId>wildfly</groupId>
-        	<artifactId>wildfly</artifactId>
-        </dependency>
     </dependencies>
 
     <build>
