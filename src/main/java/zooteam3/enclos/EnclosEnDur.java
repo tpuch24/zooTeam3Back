@@ -1,4 +1,4 @@
-package zooteam3;
+package zooteam3.enclos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -6,12 +6,13 @@ import java.util.ArrayList;
 import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 
-@Stateless
-public class EnclosEnDur implements IEnclosManager{
+
+//public class EnclosEnDur implements IEnclosManager{
+	public class EnclosEnDur {
 	
 	public EnclosEnDur() {	}
 
-	@Override
+//	@Override
 	public ArrayList<Enclos> getListeEnclos() {
 		ArrayList<Enclos> listeEnclos = new ArrayList<Enclos>();
         Enclos enclos = new Enclos( "Enclos des lions", 3, 7, "Cage");
@@ -30,26 +31,26 @@ public class EnclosEnDur implements IEnclosManager{
         return listeEnclos;
 	}
 	
-	@Override
+//	@Override
 	public Enclos getEnclos(int id) {
         Enclos enclos = new Enclos("Parc des reptiles", 40, 60, "Vivarium");
         enclos.setId(6);
         return enclos;
 	}
 
-	@Override
+//	@Override
 	public boolean deleteEnclos(int id) {
         return true;
 	}
 	
-	@Override
+//	@Override
 	public Enclos insertEnclos(Enclos enclos) {
         Enclos enclo = new Enclos("Nouvel enclos", 40, 60, "Vivarium");
         enclos.setId(16);
         return enclo;
 	}
 
-	@Override
+//	@Override
 	public Enclos updateEnclos(Enclos enclos) {
         return enclos;
 	}

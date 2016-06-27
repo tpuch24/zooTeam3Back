@@ -1,20 +1,34 @@
-package zooteam3;
+package zooteam3.enclos;
 
 import java.util.ArrayList;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
+@Entity
 @XmlRootElement
 public class Enclos {
+	@Id 
+	@GeneratedValue
 	private int id = 0;
+	
+	@Column
 	private String nom;
+	
+	@Column
 	private String type;
+	
+	@Column
 	private int nbAnimal = 0;
+	
+	@Column
 	private int nbAnimalMax = 0;
 
 	public Enclos() {
-		super();
 	}
 
 	public Enclos(String nom, int nbAnimal, int nbAnimalMax, String type) {

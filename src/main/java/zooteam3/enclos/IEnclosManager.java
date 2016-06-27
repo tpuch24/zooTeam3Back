@@ -1,4 +1,4 @@
-package zooteam3;
+package zooteam3.enclos;
 
 import java.io.Serializable;
 import java.util.ArrayList;

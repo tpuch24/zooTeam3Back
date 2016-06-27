@@ -1,4 +1,4 @@
-package zooteam3;
+package zooteam3.enclos;
 /**
  * JBoss, Home of Professional Open Source
  * Copyright 2015, Red Hat, Inc. and/or its affiliates, and individual

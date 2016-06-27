@@ -1,8 +1,9 @@
-package zooteam3;
+package zooteam3.enclos;
 
 import java.util.ArrayList;
 
 import javax.inject.Inject;
+import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -61,7 +62,7 @@ public class EnclosService extends Application{
     @Produces({ "application/json" })
     public String deleteEnclosJson(@PathParam("id") String id) {
     	if (enclosM.deleteEnclos(Integer.parseInt(id))) {
-    		return "{OK}";
+    		return "{\"OK\"}";
     	} else {
     		return "{KO}";
     	}
